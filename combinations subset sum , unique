@@ -1,0 +1,29 @@
+//https://leetcode.com/problems/combination-sum-ii/submissions/
+class Solution {
+public:
+    vector<vector<int>>ans;
+    void rec(int i,int t,int n,vector<int>&c,vector<int>&d){
+        if(t==0){
+            ans.push_back(d);
+            return ;
+        }
+        for(int j=i;j<n;j++){
+            if(j>i && c[j]==c[j-1]){
+                continue;
+            }
+            if(c[i]>t){
+                break;
+            }
+            d.push_back(c[j]);
+            rec(j+1,t-c[j],n,c,d);
+            d.pop_back();
+        }
+    }
+    vector<vector<int>> combinationSum2(vector<int>& c, int t) {
+        sort(c.begin(),c.end());
+        int n = c.size();
+        vector<int>d;
+        rec(0,t,n,c,d);
+        return ans;
+    }
+};
