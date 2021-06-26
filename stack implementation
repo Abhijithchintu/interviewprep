@@ -1,0 +1,49 @@
+//?? ??? ?????? ????
+#include <bits/stdc++.h>
+using namespace std;
+
+strcut node{
+    int d;
+    node * next;
+}
+node * top;
+
+void push(int x){
+    node * temp;
+    temp = new node();
+    
+    if(!temp){
+        cout<<"heapoverflow";
+        return ;
+    }
+    
+    temp->d = x;
+    temp->next = top;
+    top = temp;
+    
+    
+}
+
+bool isEmpty(){
+    if(top == NULL){
+        return true;
+    }
+    return false;
+}
+
+void pop(){
+    if(!isEmpty){
+        node * temp;
+        temp = top;
+        top = top->next;
+        temp->next = NULL;
+        free(temp);
+    }
+}
+int main(){
+    ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+    
+	return 0;
+}
